@@ -55,7 +55,23 @@ The LightGBM reranker utilizes **18 carefully engineered features** to make its 
 7. **Binary Flags (2):** Source indicators (`has_als_score`, `has_cf_score`).
 
 ## Performance & Evaluation
-The primary metric for this system is **Precision@10**, reflecting the UI/UX reality where users are typically shown a limited carousel or grid of 10 items.
+The primary metric for this system is **Precision@10**. A critical aspect of our evaluation methodology is distinguishing between **"With History"** and **"Without History"** recommendations. 
+
+To prevent artificially inflated scores, the evaluation pipeline includes a strict `filter_bought_items` logic:
+```python
+def precision_at_k(pred, gt, hist, filter_bought_items=True, K=10):
+    # ...
+    for user in gt.keys():
+        relevant_items = set(gt[user])
+        if filter_bought_items:
+            # Strictly exclude items the user has already purchased in the past
+            relevant_items -= set(hist[user]) 
+            
+        hits = len(set(pred[user][:K]) & relevant_items)
+        precisions.append(hits / K)
+    # ...
+```
+By explicitly filtering out items the user has already bought (`without history` evaluation), we ensure the model is evaluated on its true ability to discover *new* products (Cross-selling/Upselling) rather than lazily recommending past purchases.
 
 | Model / Pipeline | Precision@10 | Description |
 | :--- | :---: | :--- |
@@ -64,11 +80,5 @@ The primary metric for this system is **Precision@10**, reflecting the UI/UX rea
 | **ALS + ItemCF** | ~7.80% | Ensembling improves candidate quality significantly. |
 | **ALS + ItemCF + LightGBM** | **8.82%** | **State-of-the-Art for this dataset.** |
 
-**Business Impact:** With a Precision@10 of 8.82%, for every 10 items recommended by the system, the user will organically purchase ~0.88 items on average. Deployed to a user base of 2.5M, this represents a massive uplift in Conversion Rate (CVR) and overall Gross Merchandise Value (GMV).
+**Business Impact:** With a strict Precision@10 of 8.82% (predicting *new* items the user hasn't bought before), for every 10 items recommended, the user will organically discover and purchase ~0.88 new items on average. Deployed to a user base of 2.5M, this represents a massive uplift in Conversion Rate (CVR) and overall Gross Merchandise Value (GMV) while minimizing the Cold-Start problem.
 
-## Repository Structure
-- `/EDA_Featuring/`: Jupyter notebooks and scripts for Exploratory Data Analysis, Memory Optimization, and Feature Engineering.
-- `/example_dataset/`: Samples of chunked transaction and item data for local testing.
-- `/weight/`: Pre-trained model weights (LightGBM, ALS latent matrices).
-- `visualization_code.py`: Scripts for generating business intelligence and model evaluation charts.
-- `*.md`: Detailed internal documentation for Hyperparameters, Feature Explanations, and Pipeline comparisons.
