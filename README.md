@@ -10,6 +10,11 @@ This repository contains the implementation of a scalable, **Two-Stage Recommend
 
 The project demonstrates an end-to-end Machine Learning Engineering pipeline, from handling massive datasets (Out-of-Core/Memory-optimized processing) to advanced feature engineering and multi-stage ranking architectures.
 
+## Team Members Information
+* Trương Hoàng Thành An - 23520032
+* Lê Ngọc Thành - 23521443 
+* Nguyễn Xuân An - 23520023 
+
 ## Dataset Specifications
 The system was trained and evaluated on a massive real-world transaction dataset:
 - **Transactions:** ~39,000,000 records
