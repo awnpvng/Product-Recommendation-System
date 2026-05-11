@@ -1,0 +1,7 @@
+customer_id,gender,location,province,membership,timestamp,created_date,updated_date,sync_status_id,last_sync_date,sync_error_message,region,location_name,install_app,install_date,district,user_id,is_deleted
+14732,Nam,155,Hồ Chí Minh,Standard,1306357911,11:51.7,33:10.2,2,54:29.8,,Đông Nam Bộ,HCM - Grand View Phú Mỹ Hưng,In-Store,1306281600,7,e1e48206652bf8c279ff0206c69a80dd5f19653569f0df5a7021da9e8c937d28,FALSE
+15126,Nữ,300,Hồ Chí Minh,Standard,1306357911,11:51.7,33:10.2,2,54:29.8,,Đông Nam Bộ,HCM - 121A Nguyễn Duy Trinh,In-Store,1306281600,Thủ Đức,77891759204bd27e69fb11a7b92889aae74b50fc88105c9517cbe1110a9e42ae,FALSE
+29718,Nữ,157,Bến Tre,Standard,1312126692,38:12.7,33:10.2,2,54:29.8,,Đồng bằng sông Cửu Long,BTR - 179 Nguyễn Đình Chiểu,In-Store,1582070400,Bến Tre,b8041b584a0bb6655361727a0a61084a03ccf2c4dbce9d0460f3ad45bf220941,FALSE
+30077,Nữ,53,Hồ Chí Minh,Standard,1314302782,06:22.8,33:10.2,2,54:29.8,,Đông Nam Bộ,HCM - 101 Trần Quang Khải,In-Store,1314230400,1,c52ceaca44a83ec41a219cfaff0e05ae218a0c15a59d65f69ed86d1e363657e9,FALSE
+30085,Nữ,660,Hồ Chí Minh,Standard,1314310024,07:04.3,33:10.2,2,54:29.8,,Đông Nam Bộ,HCM - 85-87 Tây Thạnh,In-Store,1314230400,Tân Phú,74ac5764f5d67d341aacf238d7762f00e1c3dd454391337739bf49a5aa13714b,FALSE
+30136,Nữ,132,Hồ Chí Minh,Standard,1314778921,22:01.4,33:10.2,2,54:29.8,,Đông Nam Bộ,HCM - 172 Lê Văn Việt,In-Store,1625097600,Thủ Đức,ede6898050e4be30a34c97cd75955ab7dbf8a5823e628865b89abb3e405610ac,FALSE
